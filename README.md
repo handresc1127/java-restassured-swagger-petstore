@@ -1,3 +1,81 @@
+# Test Cases for Swagger Pet Store API
+
+## Test Case 1: Find Pet by ID
+**Purpose:** Verify that a pet can be retrieved by its ID.
+### Test Steps:
+1. **Send a GET request** to `/api/v3/pet/{id}` with a valid pet ID.
+2. **Verify** that the response status code is `200`.
+3. **Validate** that the response body contains the correct pet details for the given ID.
+### Expected Results:
+- **Status Code:** 200
+- **Response Body:** Contains details of the pet corresponding to the provided ID.
+### Test Data:
+- **Valid Pet ID:** 1, 2, 3
+---
+
+## Test Case 2: Find Pets by Status
+**Purpose:** Verify that pets can be retrieved by their status.
+### Test Steps:
+1. **Send a GET request** to `/api/v3/pet/findByStatus` with `status=available` as a query parameter.
+2. **Verify** that the response status code is `200`.
+3. **Validate** that all returned pets have the status "available".
+### Expected Results:
+- **Status Code:** 200
+- **Response Body:** All pets should have the status "available".
+### Test Data:
+- **Status:** "available"
+---
+
+## Test Case 3: Add a New Pet
+**Purpose:** Verify that a new pet can be added to the store.
+### Test Steps:
+1. **Send a POST request** to `/api/v3/pet` with a request body containing new pet details.
+2. **Verify** that the response status code is `200`.
+3. **Validate** that the response body matches the details of the added pet.
+### Expected Results:
+- **Status Code:** 200
+- **Response Body:** Contains the details of the newly added pet.
+### Test Data:
+- **New Pet JSON:**
+---
+
+## Test Case 4: Update an Existing Pet
+**Purpose:** Verify that an existing pet's details can be updated.
+### Test Steps:
+1. **Send a POST request** to /api/v3/pet with pet details to create it (if not already created).
+2. **Send a PUT request** to /api/v3/pet with updated pet details.
+3. Verify that the response status code is 200.
+4. **Send a GET request** to /api/v3/pet/{id} to retrieve the updated pet details.
+5. Validate that the updated pet details are reflected in the response.
+### Expected Results:
+- PUT Status Code: 200
+- GET Response Body: Contains updated details of the pet.
+### Test Data:
+- **Update Pet JSON:**
+---
+
+## Test Case 5: Delete a Pet
+**Purpose:** Verify that a pet can be deleted from the store.
+### Test Steps:
+1. Send a POST request to /api/v3/pet with pet details to create it (if not already created).
+2. Send a DELETE request to /api/v3/pet/{id}.
+3. Verify that the response status code is 200.
+4. Send a GET request to /api/v3/pet/{id} to verify that the pet has been deleted.
+### Expected Results:
+DELETE Status Code: 200
+GET Status Code: 404 (indicating the pet no longer exists)
+### Test Data:
+- Pet ID: 12
+- **Detele Pet JSON:**
+---
+
+
+
+
+
+
+
+
 # Swagger Petstore Sample
 
 ## Overview
