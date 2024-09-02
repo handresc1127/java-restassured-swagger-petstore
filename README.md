@@ -69,6 +69,76 @@ GET Status Code: 404 (indicating the pet no longer exists)
 - **Detele Pet JSON:**
 ---
 
+# Performance Test Plan for Swagger Petstore API
+
+## Overview
+The purpose of this performance test is to evaluate the scalability and stability of the Swagger Petstore APIs under different conditions. The goal is to identify potential performance bottlenecks that could impact user experience or overall functionality.
+
+## Test Scenarios
+
+### 1. Stress Test Profile
+- **Objective:** Determine how the API performs under high load conditions and identify the maximum number of concurrent users the system can handle before failures occur.
+- **Test Configuration:**
+  - **Number of Users:** 30
+  - **Ramp-Up Time:** 60 seconds
+  - **Test Duration:** 120 seconds
+- **Results:**
+  - **Initial Observation:** The first 500 errors were observed at 20 seconds.
+  - **Performance Limitation:** The endpoint is stable with a maximum of 10 concurrent users before server restart is needed.
+
+**Graph:**
+![Stress Test Profile](img/Stress.png)
+
+### 2. Load Testing
+- **Objective:** Assess the API's performance under a normal load to ensure it meets performance requirements.
+- **Test Configuration:**
+  - **Number of Users:** 5
+  - **Ramp-Up Time:** 30 seconds
+  - **Test Duration:** 120 seconds
+  - **Request Rate:** 10 requests per second
+- **Results:**
+  - **Observation:** The API maintained stable performance with a transaction rate of 10 requests per second.
+
+**Graph:**
+![Load Test Profile](img/Load.png)
+
+### 3. Endurance Testing
+- **Objective:** Validate that the API can handle a sustained load over an extended period without degradation in performance.
+- **Test Configuration:**
+  - Pending
+
+### 4. Spike Testing
+- **Objective:** Examine the API's behavior under sudden and extreme spikes in load to evaluate its ability to handle unexpected traffic bursts.
+- **Test Configuration:**
+  - Pending
+
+### 5. Scalability Testing
+- **Objective:** Assess how the API scales with an increasing number of users to ensure it meets future growth requirements.
+- **Test Configuration:**
+  - Pending
+
+## Observations
+
+1. **Stress Test Profile:**
+   - **Initial Findings:** The endpoint experienced the first 500 errors at 20 seconds. The API is able to handle up to 10 concurrent users reliably before requiring a server restart.
+
+2. **Load Testing Profile:**
+   - **Observation:** The API maintained stable performance with a transaction rate of 10 requests per second, using a load of 5 users.
+
+3. **Response Time Analysis:**
+   - **Consistency:** The response time is stable for all endpoints, with consistent average response times.
+   - **Find by Status Endpoint:** The response time for the "find by status" endpoint, which returns a list of pets filtered by availability, decreases exponentially and stabilizes around 100 ms. This behavior suggests that the endpoint may utilize a caching mechanism like Redis to improve response times with repeated calls.
+
+**Graph:**
+![Caching Effect](img/Cache.png)
+
+## Conclusion
+The performance tests reveal that the API performs adequately under normal conditions but encounters limitations under high load. The caching mechanism used for the "find by status" endpoint contributes to improved performance and reduced response times with repeated queries.
+
+---
+
+*Note: Attach the actual performance test graph images by replacing the placeholder paths.*
+
 
 
 
