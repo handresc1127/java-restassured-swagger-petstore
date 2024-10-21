@@ -1,4 +1,5 @@
 # Test Cases for Swagger Pet Store API
+By @handresc1127
 
 ## Test Case 1: Find Pet by ID
 **Purpose:** Verify that a pet can be retrieved by its ID.
